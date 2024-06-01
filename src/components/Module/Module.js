@@ -4,7 +4,10 @@ import "./Module.css";
 import { MdCancel } from "react-icons/md";
 import { IoIosLink } from "react-icons/io";
 import { SiAdobeacrobatreader } from "react-icons/si";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { CiEdit } from "react-icons/ci";
+import { PiDownloadSimpleThin } from "react-icons/pi";
 const Module = ({ module, setModules, modules }) => {
   const [title, setTitle] = useState(module.title);
   const [link, setLink] = useState(module.addLink);
@@ -60,6 +63,7 @@ const Module = ({ module, setModules, modules }) => {
     setShowRenameCard(false);
     setShowLinkRenameCard(false);
   };
+  const handleDownload = () => {};
 
   return (
     <div className="module-wrapper">
@@ -131,11 +135,56 @@ const Module = ({ module, setModules, modules }) => {
           <CiMenuKebab />
           {menuOpen && (
             <div className="menu-dropdown">
-              <button onClick={toggleRenameCard}>Edit Module</button>
+              <button
+                onClick={toggleRenameCard}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <CiEdit style={{ transform: "scale(1.5)" }} />
+                <span>Edit</span>
+              </button>
               {link && (
-                <button onClick={toggleLinkRenameCard}>Edit Link</button>
+                <button
+                  onClick={toggleLinkRenameCard}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <CiEdit style={{ transform: "scale(1.5)" }} />
+                  <span>Link</span>
+                </button>
               )}
-              <button onClick={handleDelete}>Delete</button>
+              {file && (
+                <button
+                  onClick={handleDownload}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: 10,
+                  }}
+                >
+                  <PiDownloadSimpleThin style={{ transform: "scale(1.5)" }} />
+                  <span>Download</span>
+                </button>
+              )}
+              <button
+                onClick={handleDelete}
+                style={{
+                  color: "red",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <RiDeleteBin6Line style={{ color: "red" }} />
+                <span>Delete</span>
+              </button>
             </div>
           )}
         </div>
