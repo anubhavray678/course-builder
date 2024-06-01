@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ModuleList from "./components/ModuleList/ModuleList";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [modules, setModules] = useState([]);
+
+  const addModule = (title) => {
+    setModules([...modules, { id: Date.now(), title, resources: [] }]);
+  };
+
+  const updateModules = (updatedModules) => {
+    setModules(updatedModules);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ModuleList
+        modules={modules}
+        setModules={updateModules}
+        addModule={addModule}
+      />
     </div>
   );
-}
+};
 
 export default App;
