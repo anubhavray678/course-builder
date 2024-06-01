@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Header.css";
 import { FaSortDown } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
@@ -14,6 +14,21 @@ const Header = ({
   setModules,
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -37,7 +52,7 @@ const Header = ({
   return (
     <div className="header">
       <h1>Course Builder</h1>
-      <div className="add-button" onClick={toggleMenu}>
+      <div className="add-button" onClick={toggleMenu} ref={menuRef}>
         <IoMdAdd />
         <span>Add</span>
         <FaSortDown style={{ paddingBottom: "10px" }} />
