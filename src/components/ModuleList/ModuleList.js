@@ -142,7 +142,21 @@ const ModuleList = ({ modules, setModules, addResource }) => {
       {showAddLinkCard && (
         <div className="link-adder-card">
           <div className="card-content">
-            <h2>Add a New Link</h2>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+
+                width: "100%",
+              }}
+            >
+              <h2>Add a New Link</h2>
+
+              <MdCancel
+                style={{ transform: "scale(2)", cursor: "pointer" }}
+                onClick={toggleAddLinkCard}
+              />
+            </div>
             <label>URL</label>
             <input
               type="text"

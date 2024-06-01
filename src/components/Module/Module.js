@@ -63,7 +63,14 @@ const Module = ({ module, setModules, modules }) => {
     setShowRenameCard(false);
     setShowLinkRenameCard(false);
   };
-  const handleDownload = () => {};
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = file;
+    link.download = file.split("/").pop(); // Extract filename from URL
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="module-wrapper">
