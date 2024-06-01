@@ -141,7 +141,7 @@
   }
   
   .card-content button:hover {
-    background-color: #d47887;
+    background-color: rgb(4, 144, 13);
   }
   
   .card-content button + button {

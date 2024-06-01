@@ -30,10 +30,10 @@
   
   .dropdown-menu {
     position: absolute;
-    top: 100%; /* Position the dropdown below the add-button */
-    left: 0;
+    top: 110%; 
+    right: 0;
     background-color: #ffffff;
-    color: black;
+    color: #000000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     overflow: hidden;

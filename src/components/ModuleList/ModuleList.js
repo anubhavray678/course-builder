@@ -83,7 +83,7 @@ const ModuleList = ({ modules, setModules, addResource }) => {
       {modules.length === 0 ? (
         <div className="no-modules">
           <img src={noModulesImage} alt="No modules" />
-          <p>No modules available. Click "Add" to create a new module.</p>
+          <p>Click on the [+] Add button to add items to this course</p>
         </div>
       ) : (
         <div className="modules-list">
